@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#070b14">
+  <title>Cross DJ Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Start screen (needed so the browser allows audio) -->
+  <div id="splash" class="splash">
+    <img src="logo.png" alt="Cross DJ Pro logo">
+    <h1>CROSS DJ <span>PRO</span></h1>
+    <p>Tap anywhere to start</p>
+  </div>
+
+  <header class="top">
+    <img src="logo.png" alt="logo">
+    <h1>CROSS DJ <span>PRO</span></h1>
+    <div class="sp"></div>
+    <button id="helpBtn" class="mini">?</button>
+  </header>
+
+  <main class="rig">
+    <section class="deck" id="deckA"></section>
+
+    <section class="mixer">
+      <div class="mx-title">MIXER</div>
+      <div class="mx-row">
+        <label class="sl"><span>MASTER</span><input id="master" type="range" min="0" max="1" step="0.01" value="0.85"></label>
+      </div>
+      <div class="meter"><i id="vu"></i></div>
+      <div class="xf">
+        <b class="ca">A</b>
+        <input id="xfader" type="range" min="0" max="1" step="0.005" value="0.5">
+        <b class="cb">B</b>
+      </div>
+      <div class="mx-row two">
+        <button id="curve" class="btn">CURVE: SMOOTH</button>
+        <button id="xfCenter" class="btn">CENTER</button>
+      </div>
+      <button id="rec" class="btn rec">● REC <span id="recT"></span></button>
+    </section>
+
+    <section class="deck" id="deckB"></section>
+  </main>
+
+  <div id="status">Tap LOAD to pick a song, or DEMO to try a built-in beat.</div>
+
+  <input type="file" id="file" accept="audio/*" hidden>
+
+  <div id="help" class="ov hidden">
+    <div class="box">
+      <h3>Quick guide</h3>
+      <ul>
+        <li><b>LOAD</b> – pick a song from your phone. <b>DEMO</b> – built-in practice beat.</li>
+        <li><b>PLAY</b> – start/pause. <b>CUE</b> – tap while playing to jump back to the cue point; tap while paused to set it; hold to preview.</li>
+        <li><b>Tap the waveform</b> to jump to that spot.</li>
+        <li><b>SYNC</b> – matches this deck's tempo to the other deck.</li>
+        <li><b>LOOP 1/2/4/8</b> – loops that many beats. Tap again to release.</li>
+        <li><b>Hot cues 1–4</b> – tap to set, tap again to jump, hold to clear.</li>
+        <li><b>HI / MID / LOW</b> – EQ. <b>FILTER</b> – left = low-pass, right = high-pass.</li>
+        <li><b>PITCH</b> – speed ±16%. <b>NUDGE</b> – hold to speed up/slow down slightly.</li>
+        <li><b>FX</b> – choose Echo, Reverb or Flanger, set amount, press FX to switch on.</li>
+        <li><b>Crossfader</b> – blends deck A and deck B.</li>
+        <li><b>REC</b> – records the master mix and saves it to your Downloads/CrossDJ folder.</li>
+        <li>Tap a slider's name to reset it.</li>
+      </ul>
+      <button class="btn" id="helpClose">Close</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

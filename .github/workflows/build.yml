@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Unpack project zip
+        run: |
+          ZIP=$(ls *.zip | head -1)
+          echo "Using $ZIP"
+          mkdir proj
+          unzip -q "$ZIP" -d proj
+          ls proj
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -15,8 +22,9 @@ jobs:
         with:
           gradle-version: 8.7
       - name: Build debug APK
+        working-directory: proj
         run: gradle assembleDebug
       - uses: actions/upload-artifact@v4
         with:
           name: CrossDJPro-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: proj/app/build/outputs/apk/debug/app-debug.apk
